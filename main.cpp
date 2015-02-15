@@ -52,7 +52,19 @@ void __declspec(naked) RunScriptHook()
 
 	stack->szLua;
 
-	Log(stack->szLua);
+	//Place LUA mod code below this.....
+	
+		//Example - Change all LUA MsgN('LUA Mod')
+		Log(stack->szLocation);
+		Log(stack->szLua);
+		
+		stack->szLocation = "TheMoon";
+		stack->szLua = "MsgN('LUA MOD')";
+		
+		Log(stack->szLocation);
+		Log(stack->szLua);
+
+	//Place LUA mod code above this......
 
 	__asm popad
 	__asm jmp[oRunScriptHook];
